@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Joogle</title>
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+            .bigBox{
+                width: 40%;
+                left: 15%;
+                position: absolute;
+            }
+
+            .title{
+                text-align: center;
+                /*margin-top: 0px;
+                margin-bottom: 0px;*/
+                /*width: 10%;*/
+                /*height: 36px;*/
+                color: #FF6600;
+                font-size: 60px;
+                font-weight: bold;
+                font-family: fantasy;
+                position: absolute;
+            }
+
+            .homeBtn{
+                width: 10%;
+                height: 36px;
+                border: none;
+                outline: none;
+                position: absolute;
+                left: 15%;
+                color: white;
+                font-size: 15px;
+                font-family: fantasy;
+                background-color: cornflowerblue;
+            }
+            
+            .homeBtn:hover{
+                background-color: orange;
+            }
+
+            .details{
+                display:inline-block;
+                width:300px;
+            }
+        </style>
+    </head>
+
+    <body ng-controller="ctrl">
+        <br>
+        <br>
+        <div class="bigBox">
+            <div class="title">
+                <h4>Joogle</h4>
+            </div>
+            <form method="post" action="/">
+                <input class="homeBtn" role="button" type="submit" value="Home">
+            </form>
+        </div>
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div id="box">
+                <h4 style="color:#000099">Question</h4>
+                <br>
+                <!-- q = {Id, Title, CommentCount, Score, UserName, CreationDate} -->
+                {% if q['CommentCount']==0 %}
+                    <p>
+                        {{ q['Title'] }} 
+                        <span style="color:#428BCA">No comments</span>
+                    </p>
+                {% else %}
+                    <p>
+                        {{ q['Title'] }} 
+                        <a href="/comm/{{ q['Id'] }}" target="_blank">See {{ q['CommentCount'] }} comments</a>
+                    </p>
+                {% endif %}
+                <p>
+                    <span class="details">Score: {{ q['Score'] }}</span>
+                    <span class="details">Name: {{ q['UserName'] }}</span>
+                    <span class="details">Time: {{ q['CreationDate'] }}</span>
+                </p>
+                <hr />
+                <br>
+                <br>
+                <h4 style="color:#000099">Answers</h4>
+                <span>Totally {{ length }} answers</span>
+                <br>
+                <br>
+                {% for doc in docs %}
+                <!-- doc = {Id, Body, CommentCount, Score, UserName, CreationDate, Accepted} -->
+                    {% if doc['CommentCount']==0 %}
+                        <p>
+                            {{ doc['Body']|safe }} 
+                            <span style="color:#428BCA">No comments</span>
+                        </p>
+                    {% else %}
+                        <p>
+                            {{ doc['Body']|safe }}
+                            <a href="/comm/{{ doc['Id'] }}" target="_blank">See {{ doc['CommentCount'] }} comments</a>
+                        </p>
+                    {% endif %}
+                    <p>
+                        {% if doc['Accepted']==True %}
+                            <span style="color:#009900">Accepted</span>
+                        {% else %}
+                            <span style="color:#990000">Unaccepted</span>
+                        {% endif %}
+                    </p>
+                    <p>
+                        <span class="details">Score: {{ doc['Score'] }}</span>
+                        <span class="details">Name: {{ doc['UserName'] }}</span>
+                        <span class="details">Time: {{ doc['CreationDate'] }}</span>
+                    </p>
+                    <hr />
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

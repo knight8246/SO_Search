@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Joogle</title>
+        <!-- <link href="./style.css" rel="stylesheet" type="text/css" charset="utf-8"/> -->
+        <style type="text/css">
+            .title{
+                text-align: center;
+                margin-top: 200px;
+                margin-bottom: 0px;
+                color: #FF6600;
+                font-size: 60px;
+                font-weight: bold;
+                font-family: fantasy;
+            }
+
+            .tagBox{
+                width: 40%;
+                height: 35px;
+                /*border: 1px solid cadetblue;*/
+                outline: hidden;
+                /*border-radius: 2px;*/
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .searchBox{
+                width: 40%;
+                height: 36px;
+                border: 1px solid cadetblue;
+                outline: hidden;
+                border-radius: 2px;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .inputBox{
+                width: 85%;
+                height: 34px;
+                border: none;
+                line-height: 35px;
+                outline: none;
+                padding-left: 10px;
+                /*caret-color:#008B8B;*/
+                font-size: 16px;
+            }
+
+            .searchBtn{
+                width: 15%;
+                height: 36px;
+                border: none;
+                outline: none;
+                position: absolute;
+                right: 0;
+                color: white;
+                font-size: 15px;
+                font-family: fantasy;
+                background-color: cornflowerblue;
+            }
+            
+            .searchBtn:hover{
+                background-color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="title">
+            <h4>Joogle</h4>
+        </div>
+        <div class="tagBox">
+            <a href="/" style="margin-right:20px">Related</a>
+            <a href="/t2" style="margin-right:20px">Linked</a>
+            <a href="/t3" style="margin-right:20px">Title</a>
+            <a href="/t4" style="margin-right:20px">Content</a>
+            <span style="margin-right:20px">Debug</span>
+        </div>
+        <div class="searchBox">
+            <form method="post">
+                <input class="inputBox" name="query" placeholder="What do you want to know?">
+                <input class="searchBtn" type="submit" value="Go!"/>
+                <!-- <button class="searchBtn">Go!</button> -->
+            </form>
+        </div>
+    </body>
+</html>
+
+
+
+

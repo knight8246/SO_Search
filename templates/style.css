@@ -1,0 +1,47 @@
+.title{
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 0px;
+    color: cadetblue;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+.searchBox{
+    width: 40%;
+    height: 35px;
+    border: 1px solid cadetblue;
+    outline: hidden;
+    border-radius: 2px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.inputBox{
+    width: 85%;
+    height: 35px;
+    border: none;
+    line-height: 35px;
+    outline: none;
+    padding-left: 10px;
+    /*caret-color:#008B8B;*/
+    font-size: 16px;
+}
+
+.searchBtn{
+    width: 15%;
+    height: 35px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 0;
+    color: white;
+    font-size: 15px;
+    font-family: fantasy;
+    background-color: cornflowerblue;
+}
+
+.searchBtn:hover{
+    background-color: orange;
+}

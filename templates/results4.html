@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Joogle</title>
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+            .bigBox{
+                width: 40%;
+                left: 15%;
+                position: absolute;
+            }
+
+            .title{
+                text-align: center;
+                /*margin-top: 0px;
+                margin-bottom: 0px;*/
+                /*width: 10%;*/
+                /*height: 36px;*/
+                color: #FF6600;
+                font-size: 60px;
+                font-weight: bold;
+                font-family: fantasy;
+                position: absolute;
+            }
+
+            .tagBox{
+                width: 30%;
+                height: 35px;
+                /*border: 1px solid cadetblue;*/
+                outline: hidden;
+                /*border-radius: 2px;*/
+                left: 20%;
+                position: relative;
+            }
+
+            .searchBox{
+                width: 88%;
+                height: 36px;
+                border: 1px solid cadetblue;
+                outline: hidden;
+                /*border-radius: 2px;*/
+                margin: 0 auto;
+                right: 0;
+                position: absolute;
+            }
+
+            .inputBox{
+                width: 85%;
+                height: 34px;
+                border: none;
+                line-height: 35px;
+                outline: none;
+                padding-left: 10px;
+                /*caret-color:#008B8B;*/
+                font-size: 16px;
+            }
+
+            .searchBtn{
+                width: 15%;
+                height: 35px;
+                border: none;
+                outline: none;
+                position: absolute;
+                right: 0;
+                color: white;
+                font-size: 15px;
+                font-family: fantasy;
+                background-color: cornflowerblue;
+            }
+            
+            .searchBtn:hover{
+                background-color: orange;
+            }
+        </style>
+    </head>
+
+    <body ng-controller="ctrl">
+        <br>
+        <br>
+        <div class="tagBox">
+            <a href="/q/{{ value }}" style="margin-right:20px">Related</a>
+            <a href="/q2/{{ value }}" style="margin-right:20px">Linked</a>
+            <a href="/q3/{{ value }}" style="margin-right:20px">Title</a>
+            <span style="margin-right:20px">Content</span>
+            <a href="/q5/{{ value }}" style="margin-right:20px">Debug</a>
+        </div>
+        <div class="bigBox">
+            <div class="title">
+                <h4>Joogle</h4>
+            </div>
+            <form method="post" action="/t4">
+                <div class="searchBox">
+                    <input type="text" class="inputBox" ng-model="query" value="{{ value }}" name="query"/>
+                    <input class="searchBtn" role="button" type="submit" value="Go!">
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <br>
+            <br>
+            <br>Totally {{ length }} results ({{ time }} seconds)
+            <br>
+            <div id="box">
+                {% for doc in docs %}
+                <!-- doc = [id, title, link] -->
+                <p><a href="/ans/{{ doc['id'] }}" target="_blank">{{ doc['title']|safe }}</a></p>
+                <p>From: <a href="{{ doc['link'] }}" target="_blank" style="color:#101010">{{ doc['link'] }}</a></p>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
